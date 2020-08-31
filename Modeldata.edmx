@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="DatabaseModelStoreContainer">
+          <EntitySet Name="Database" EntityType="DatabaseModel.Store.Database" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Masterlist" EntityType="DatabaseModel.Store.Masterlist" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Database">
+          <Key>
+            <PropertyRef Name="S/N" />
+          </Key>
+          <Property Name="S/N" Type="money" Nullable="false" />
+          <Property Name="Full Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Date&#xA;(MM/DD/YYYY)" Type="smalldatetime" />
+          <Property Name="Day" Type="nchar" MaxLength="10" />
+          <Property Name="Location" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sub-Location (Platform Only)" Type="nvarchar" MaxLength="50" />
+          <Property Name="Requested Shift Timing (Start)&#xA;(08:00:00 AM/PM Format)" Type="nchar" MaxLength="10" />
+          <Property Name="Requested Shift Timing (End)&#xA;&#xA;(08:00:00 AM/PM Format)" Type="nchar" MaxLength="10" />
+          <Property Name="Break?" Type="nchar" MaxLength="10" />
+          <Property Name="Overtime? &#xA;(OT)" Type="nchar" MaxLength="10" />
+          <Property Name="Start Time&#xA;&#xA;(08:00:00 AM/PM Format)" Type="nchar" MaxLength="10" />
+          <Property Name="End Time&#xA;&#xA;(08:00:00 AM/PM Format)" Type="nchar" MaxLength="10" />
+          <Property Name="Time" Type="nchar" MaxLength="10" />
+          <Property Name="No. of Requested Headcount" Type="nchar" MaxLength="10" />
+          <Property Name="No. of Actual Headcount" Type="nchar" MaxLength="10" />
+          <Property Name="No. of Requested Hours" Type="nchar" MaxLength="10" />
+          <Property Name="Shortage of Requested Hours" Type="nchar" MaxLength="10" />
+          <Property Name="Reason for The Shortage of Hours" Type="nchar" MaxLength="10" />
+          <Property Name="Total No. of Hours Fulfilled" Type="nchar" MaxLength="10" />
+          <Property Name="Total No. of Manhours" Type="nchar" MaxLength="10" />
+          <Property Name="Is This ORT /  OJT / Spare / Non-Activated Standby?" Type="nchar" MaxLength="10" />
+          <Property Name="No. of ORT / OJT / Spare / Non-Activated Standby" Type="nchar" MaxLength="10" />
+          <Property Name="Total No. of Hours for ORT / OJT / Spare / Non-Activated Standby" Type="nchar" MaxLength="10" />
+          <Property Name="Classification of Payment" Type="nchar" MaxLength="10" />
+          <Property Name="Hourly / Daily Pay Type" Type="nchar" MaxLength="10" />
+          <Property Name="Salary Rate (Variable)" Type="nchar" MaxLength="10" />
+          <Property Name="No. of 5 Mins Block of Lateness (Non-Excusable)" Type="nchar" MaxLength="10" />
+          <Property Name="Salary Deduction for Lateness" Type="nchar" MaxLength="10" />
+          <Property Name="Salary Deduction For Absence" Type="nchar" MaxLength="10" />
+          <Property Name="Activated?" Type="nchar" MaxLength="10" />
+          <Property Name="Activation Hours" Type="nchar" MaxLength="10" />
+          <Property Name="Activation Allowance Rate" Type="nchar" MaxLength="10" />
+          <Property Name="Total Salary" Type="nchar" MaxLength="10" />
+          <Property Name="Team Leader Additional Hour" Type="nchar" MaxLength="10" />
+          <Property Name="Team Leader Additional Salary  (Additional Hr x Salary Rate)" Type="nchar" MaxLength="10" />
+          <Property Name="DAA&#xA;($2)" Type="nchar" MaxLength="10" />
+          <Property Name="Uniform&#xA;Return = +$10.&#xA;Purchases = - $10 (-ve)" Type="nchar" MaxLength="10" />
+          <Property Name="Back Support &#xA;Return = $20&#xA;Purchase = - $20 (-ve)" Type="nchar" MaxLength="10" />
+          <Property Name="Miscellaneous (Adjustment/Reimbursement)" Type="nchar" MaxLength="10" />
+          <Property Name="Total Salary (incl. Miscellaneous Cost)" Type="nchar" MaxLength="10" />
+          <Property Name="Hourly / Daily Invoice Type" Type="nchar" MaxLength="10" />
+          <Property Name="Invoice Rate" Type="nchar" MaxLength="10" />
+          <Property Name="Total Revenue (Invoice)" Type="nchar" MaxLength="10" />
+          <Property Name="Negative Revenue (Opportunity Lost)" Type="nchar" MaxLength="10" />
+          <Property Name="OPS Additional Cost" Type="nchar" MaxLength="10" />
+          <Property Name="Gross Profit ($)" Type="nchar" MaxLength="10" />
+          <Property Name="CASH PAYMENT" Type="nchar" MaxLength="10" />
+          <Property Name="Remarks" Type="nchar" MaxLength="10" />
+          <Property Name="Type of Worker" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Masterlist">
+          <Key>
+            <PropertyRef Name="Full Name" />
+          </Key>
+          <Property Name="Full Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Time" Type="time" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DatabaseModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Databases" EntityType="DatabaseModel.Database" />
+          <EntitySet Name="Masterlists" EntityType="DatabaseModel.Masterlist" />
+        </EntityContainer>
+        <EntityType Name="Database">
+          <Key>
+            <PropertyRef Name="S_N" />
+          </Key>
+          <Property Name="S_N" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Full_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Date__MM_DD_YYYY_" Type="DateTime" />
+          <Property Name="Day" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Location" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Sub_Location__Platform_Only_" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Requested_Shift_Timing__Start___08_00_00_AM_PM_Format_" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Requested_Shift_Timing__End____08_00_00_AM_PM_Format_" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Break_" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Overtime____OT_" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Start_Time___08_00_00_AM_PM_Format_" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="End_Time___08_00_00_AM_PM_Format_" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Time" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="No__of_Requested_Headcount" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="No__of_Actual_Headcount" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="No__of_Requested_Hours" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Shortage_of_Requested_Hours" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Reason_for_The_Shortage_of_Hours" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Total_No__of_Hours_Fulfilled" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Total_No__of_Manhours" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Is_This_ORT____OJT___Spare___Non_Activated_Standby_" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="No__of_ORT___OJT___Spare___Non_Activated_Standby" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Total_No__of_Hours_for_ORT___OJT___Spare___Non_Activated_Standby" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Classification_of_Payment" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Hourly___Daily_Pay_Type" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Salary_Rate__Variable_" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="No__of_5_Mins_Block_of_Lateness__Non_Excusable_" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Salary_Deduction_for_Lateness" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Salary_Deduction_For_Absence" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Activated_" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Activation_Hours" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Activation_Allowance_Rate" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Total_Salary" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Team_Leader_Additional_Hour" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Team_Leader_Additional_Salary___Additional_Hr_x_Salary_Rate_" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="DAA___2_" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Uniform_Return_____10__Purchases______10___ve_" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Back_Support__Return____20_Purchase______20___ve_" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Miscellaneous__Adjustment_Reimbursement_" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Total_Salary__incl__Miscellaneous_Cost_" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Hourly___Daily_Invoice_Type" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Invoice_Rate" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Total_Revenue__Invoice_" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Negative_Revenue__Opportunity_Lost_" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="OPS_Additional_Cost" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Gross_Profit____" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="CASH_PAYMENT" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Remarks" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="Type_of_Worker" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="Masterlist">
+          <Key>
+            <PropertyRef Name="Full_Name" />
+          </Key>
+          <Property Name="Full_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="Time" Type="Time" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities">
+          <EntitySetMapping Name="Databases">
+            <EntityTypeMapping TypeName="DatabaseModel.Database">
+              <MappingFragment StoreEntitySet="Database">
+                <ScalarProperty Name="S_N" ColumnName="S/N" />
+                <ScalarProperty Name="Full_Name" ColumnName="Full Name" />
+                <ScalarProperty Name="Date__MM_DD_YYYY_" ColumnName="Date&#xA;(MM/DD/YYYY)" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Sub_Location__Platform_Only_" ColumnName="Sub-Location (Platform Only)" />
+                <ScalarProperty Name="Requested_Shift_Timing__Start___08_00_00_AM_PM_Format_" ColumnName="Requested Shift Timing (Start)&#xA;(08:00:00 AM/PM Format)" />
+                <ScalarProperty Name="Requested_Shift_Timing__End____08_00_00_AM_PM_Format_" ColumnName="Requested Shift Timing (End)&#xA;&#xA;(08:00:00 AM/PM Format)" />
+                <ScalarProperty Name="Break_" ColumnName="Break?" />
+                <ScalarProperty Name="Overtime____OT_" ColumnName="Overtime? &#xA;(OT)" />
+                <ScalarProperty Name="Start_Time___08_00_00_AM_PM_Format_" ColumnName="Start Time&#xA;&#xA;(08:00:00 AM/PM Format)" />
+                <ScalarProperty Name="End_Time___08_00_00_AM_PM_Format_" ColumnName="End Time&#xA;&#xA;(08:00:00 AM/PM Format)" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="No__of_Requested_Headcount" ColumnName="No. of Requested Headcount" />
+                <ScalarProperty Name="No__of_Actual_Headcount" ColumnName="No. of Actual Headcount" />
+                <ScalarProperty Name="No__of_Requested_Hours" ColumnName="No. of Requested Hours" />
+                <ScalarProperty Name="Shortage_of_Requested_Hours" ColumnName="Shortage of Requested Hours" />
+                <ScalarProperty Name="Reason_for_The_Shortage_of_Hours" ColumnName="Reason for The Shortage of Hours" />
+                <ScalarProperty Name="Total_No__of_Hours_Fulfilled" ColumnName="Total No. of Hours Fulfilled" />
+                <ScalarProperty Name="Total_No__of_Manhours" ColumnName="Total No. of Manhours" />
+                <ScalarProperty Name="Is_This_ORT____OJT___Spare___Non_Activated_Standby_" ColumnName="Is This ORT /  OJT / Spare / Non-Activated Standby?" />
+                <ScalarProperty Name="No__of_ORT___OJT___Spare___Non_Activated_Standby" ColumnName="No. of ORT / OJT / Spare / Non-Activated Standby" />
+                <ScalarProperty Name="Total_No__of_Hours_for_ORT___OJT___Spare___Non_Activated_Standby" ColumnName="Total No. of Hours for ORT / OJT / Spare / Non-Activated Standby" />
+                <ScalarProperty Name="Classification_of_Payment" ColumnName="Classification of Payment" />
+                <ScalarProperty Name="Hourly___Daily_Pay_Type" ColumnName="Hourly / Daily Pay Type" />
+                <ScalarProperty Name="Salary_Rate__Variable_" ColumnName="Salary Rate (Variable)" />
+                <ScalarProperty Name="No__of_5_Mins_Block_of_Lateness__Non_Excusable_" ColumnName="No. of 5 Mins Block of Lateness (Non-Excusable)" />
+                <ScalarProperty Name="Salary_Deduction_for_Lateness" ColumnName="Salary Deduction for Lateness" />
+                <ScalarProperty Name="Salary_Deduction_For_Absence" ColumnName="Salary Deduction For Absence" />
+                <ScalarProperty Name="Activated_" ColumnName="Activated?" />
+                <ScalarProperty Name="Activation_Hours" ColumnName="Activation Hours" />
+                <ScalarProperty Name="Activation_Allowance_Rate" ColumnName="Activation Allowance Rate" />
+                <ScalarProperty Name="Total_Salary" ColumnName="Total Salary" />
+                <ScalarProperty Name="Team_Leader_Additional_Hour" ColumnName="Team Leader Additional Hour" />
+                <ScalarProperty Name="Team_Leader_Additional_Salary___Additional_Hr_x_Salary_Rate_" ColumnName="Team Leader Additional Salary  (Additional Hr x Salary Rate)" />
+                <ScalarProperty Name="DAA___2_" ColumnName="DAA&#xA;($2)" />
+                <ScalarProperty Name="Uniform_Return_____10__Purchases______10___ve_" ColumnName="Uniform&#xA;Return = +$10.&#xA;Purchases = - $10 (-ve)" />
+                <ScalarProperty Name="Back_Support__Return____20_Purchase______20___ve_" ColumnName="Back Support &#xA;Return = $20&#xA;Purchase = - $20 (-ve)" />
+                <ScalarProperty Name="Miscellaneous__Adjustment_Reimbursement_" ColumnName="Miscellaneous (Adjustment/Reimbursement)" />
+                <ScalarProperty Name="Total_Salary__incl__Miscellaneous_Cost_" ColumnName="Total Salary (incl. Miscellaneous Cost)" />
+                <ScalarProperty Name="Hourly___Daily_Invoice_Type" ColumnName="Hourly / Daily Invoice Type" />
+                <ScalarProperty Name="Invoice_Rate" ColumnName="Invoice Rate" />
+                <ScalarProperty Name="Total_Revenue__Invoice_" ColumnName="Total Revenue (Invoice)" />
+                <ScalarProperty Name="Negative_Revenue__Opportunity_Lost_" ColumnName="Negative Revenue (Opportunity Lost)" />
+                <ScalarProperty Name="OPS_Additional_Cost" ColumnName="OPS Additional Cost" />
+                <ScalarProperty Name="Gross_Profit____" ColumnName="Gross Profit ($)" />
+                <ScalarProperty Name="CASH_PAYMENT" ColumnName="CASH PAYMENT" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Type_of_Worker" ColumnName="Type of Worker" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Masterlists">
+            <EntityTypeMapping TypeName="DatabaseModel.Masterlist">
+              <MappingFragment StoreEntitySet="Masterlist">
+                <ScalarProperty Name="Full_Name" ColumnName="Full Name" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Modeldata" ZoomLevel="64">
+        <EntityTypeShape EntityType="DatabaseModel.Database" Width="1.5" PointX="0.75" PointY="0.75" Height="10.441549479166666" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Masterlist" Width="1.5" PointX="2.75" PointY="0.75" Height="1.5956835937499996" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
